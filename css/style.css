@@ -34,7 +34,7 @@ body {
     align-items: center;
     transform-style: preserve-3d;
     perspective: 1000px;
-    margin: 100px;
+    margin: 100px auto;
 }
 
 .book-wrapper .book {
@@ -102,6 +102,7 @@ body {
 
 .description h3 {
     font-weight: var(--font-bold);
+    font-size: 2rem;
 }
 
 .description h4 {
