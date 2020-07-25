@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+/* Css variables */
+
+:root {
+    --el-with: 383px;
+    --el-height: 567px;
+    --el-depth: 60px;
+    --half-rotate: 35deg;
+    --half-medium: 90deg;
+    --full-rotate: 180deg;
+    --font-light: 100;
+    --font-medium: 400;
+    --font-bold: 900;
+    --yellow-button: #ffca39;
+}
+
+* {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.book-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    margin: 100px;
+}
+
+.book-wrapper .book {
+    position: relative;
+    width: var(--el-with);
+    height: var(--el-height);
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, .2);
+    transform-style: preserve-3d;
+    background-image: url("../assets/cover.jpg");
+    background-size: cover;
+    transition: .5s;
+    transform: scale3d(0.5, 0.5, .1);
+}
+
+.book-wrapper .book:hover {
+    transform: rotateY(var(--half-rotate));
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, .2);
+}
+
+.book-wrapper .book:active {
+    transform: rotateY(var(--full-rotate));
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, .2);
+}
+
+.book-wrapper .book::before {
+    content: "";
+    position: absolute;
+    width: var(--el-depth);
+    height: 100%;
+    transform-origin: left;
+    background: url("../assets/side.jpg");
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(var(--half-medium))
+}
+
+.book-wrapper .book::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    background: url("../assets/back.jpg");
+    background-position: center;
+    background-size: cover;
+    transform: rotateY(var(--full-rotate)) translateZ(var(--el-depth));
+}
+
+.book-wrapper .book img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, .2);
+}
+
+/* text congiguration */
+
+.description {
+    width: 300px;
+    margin-left: 50px;
+}
+
+.description h3 {
+    font-weight: var(--font-bold);
+}
+
+.description h4 {
+    font-weight: var(--font-medium);
+    margin: 25px auto;
+}
+
+.description p {
+    font-weight: var(--font-light);
+    text-align: initial;
+}
+
+/* Button */
+
+.button {
+    display: flex;
+    margin: auto;
+    border: none;
+    border-radius: 20px;
+    width: 130px;
+    padding: 10px;
+    justify-content: center;
+    font-weight: var(--font-bold);
+    background-color: var(--yellow-button);
+    margin-top: 10px;
+}
+
+.button:active {
+    transform: scale3d(.9, .9, 1);
+}
+
+/* Break line */
+
+@media screen and (max-width:700px) {
+    body{
+        overflow-x: hidden;
+    }
+    .book-wrapper {
+        flex-direction: column;
+    }
+    .description {
+        margin-top: 30px;
+    }
+}
